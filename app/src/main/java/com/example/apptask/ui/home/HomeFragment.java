@@ -1,35 +1,53 @@
-package com.example.apptask.ui.home;
+       package com.example.apptask.ui.home;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+       import android.content.Intent;
+       import android.os.Bundle;
+       import android.view.LayoutInflater;
+       import android.view.View;
+       import android.view.ViewGroup;
 
-import com.example.apptask.R;
+       import androidx.annotation.NonNull;
+       import androidx.annotation.Nullable;
+       import androidx.fragment.app.Fragment;
+       import androidx.recyclerview.widget.LinearLayoutManager;
+       import androidx.recyclerview.widget.RecyclerView;
 
-public class HomeFragment extends Fragment {
+       import com.example.apptask.R;
+       import com.example.apptask.models.Task;
+       import java.util.ArrayList;
 
-    private HomeViewModel homeViewModel;
+       import static android.app.Activity.RESULT_OK;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
-    }
-}
+       public class HomeFragment extends Fragment {
+
+           private TaskAdapter taskAdapter;
+           private ArrayList<Task> list = new ArrayList<>();
+           Task task;
+           int pos;
+
+           public View onCreateView(@NonNull LayoutInflater inflater,
+                                    ViewGroup container, Bundle savedInstanceState) {
+               return inflater.inflate(R.layout.fragment_home, container, false);
+           }
+
+           @Override
+           public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+               super.onViewCreated(view, savedInstanceState);
+               RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+               recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+               taskAdapter = new TaskAdapter(list);
+               recyclerView.setAdapter(taskAdapter);
+           }
+
+           @Override
+           public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+               super.onActivityResult(requestCode, resultCode, data);
+               if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
+                   task = (Task) data.getSerializableExtra("task");
+                   list.add(pos,task);
+                   taskAdapter.update(list);
+                   taskAdapter.notifyDataSetChanged(); 
+               }
+           }
+       }

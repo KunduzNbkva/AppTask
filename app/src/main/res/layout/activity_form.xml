@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save"
+        android:background="@drawable/button_stroke_black95_press_white"
         android:onClick="onClick"/>
 
 </LinearLayout>

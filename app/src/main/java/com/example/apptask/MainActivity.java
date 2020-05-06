@@ -8,12 +8,14 @@ import android.view.View;
 import android.view.Menu;
 
 import com.example.apptask.models.Task;
+import com.example.apptask.ui.onBoard.OnBoardActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -30,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if(true){
+//            startActivity(new Intent(this,OnBoardActivity.class));
+//            finish();
+        }
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -78,10 +84,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==RESULT_OK&&requestCode==100&&data!=null){
-            Task task=(Task)data.getSerializableExtra("Task");
-            Log.e("TAG","title="+task.getTitle());
-            Log.e("TAG","desc="+task.getDesc());
+        if(resultCode == RESULT_OK && requestCode == 100 && data != null){
+            Task task = (Task) data.getSerializableExtra("task");
+            Log.e("TAG", "title: " + task.getTitle());
+           Log.e("TAG", "title: " + task.getDesc());
+            Fragment fragment =  getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+            if(fragment!=null){
+                fragment.getChildFragmentManager().getFragments().get(0).onActivityResult(requestCode,resultCode,data);
+            }
+
 
 
         }
