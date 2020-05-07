@@ -1,6 +1,4 @@
        package com.example.apptask.ui.home;
-
-
        import android.content.Intent;
        import android.os.Bundle;
        import android.view.LayoutInflater;
@@ -23,8 +21,7 @@
 
            private TaskAdapter taskAdapter;
            private ArrayList<Task> list = new ArrayList<>();
-           Task task;
-           int pos;
+           private int pos;
 
            public View onCreateView(@NonNull LayoutInflater inflater,
                                     ViewGroup container, Bundle savedInstanceState) {
@@ -44,8 +41,8 @@
            public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
                super.onActivityResult(requestCode, resultCode, data);
                if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
-                   task = (Task) data.getSerializableExtra("Task");
-                   list.add(pos,task);
+                   Task task = (Task) data.getSerializableExtra("Task");
+                   list.add(pos, task);
                    taskAdapter.update(list);
                    taskAdapter.notifyDataSetChanged(); 
                }
