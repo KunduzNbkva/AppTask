@@ -44,7 +44,7 @@
            public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
                super.onActivityResult(requestCode, resultCode, data);
                if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
-                   task = (Task) data.getSerializableExtra("task");
+                   task = (Task) data.getSerializableExtra("Task");
                    list.add(pos,task);
                    taskAdapter.update(list);
                    taskAdapter.notifyDataSetChanged(); 

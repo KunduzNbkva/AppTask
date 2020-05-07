@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if(true){
-//            startActivity(new Intent(this,OnBoardActivity.class));
-//            finish();
+        if(false){
+            startActivity(new Intent(this,OnBoardActivity.class));
+            finish();
         }
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -85,9 +85,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK && requestCode == 100 && data != null){
-            Task task = (Task) data.getSerializableExtra("task");
-            Log.e("TAG", "title: " + task.getTitle());
-           Log.e("TAG", "title: " + task.getDesc());
+           // Task task = (Task) data.getSerializableExtra("task");
+          //  Log.e("TAG", "title: " + task.getTitle());
+           //Log.e("TAG", "title: " + task.getDesc());
             Fragment fragment =  getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
             if(fragment!=null){
                 fragment.getChildFragmentManager().getFragments().get(0).onActivityResult(requestCode,resultCode,data);
