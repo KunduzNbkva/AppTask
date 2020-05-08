@@ -1,16 +1,17 @@
 package com.example.apptask;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
-import com.example.apptask.models.Task;
 import com.example.apptask.ui.onBoard.OnBoardActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if(false){
+        if(!isShown()){
             startActivity(new Intent(this,OnBoardActivity.class));
             finish();
         }
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_exit) {
+            startActivity(new Intent(this,OnBoardActivity.class));
             finish();
         }
         return super.onOptionsItemSelected(item);
@@ -92,9 +94,26 @@ public class MainActivity extends AppCompatActivity {
             if(fragment!=null){
                 fragment.getChildFragmentManager().getFragments().get(0).onActivityResult(requestCode,resultCode,data);
             }
-
-
-
         }
+    }
+
+    private boolean isShown(){
+        SharedPreferences preferences=getSharedPreferences("settings", Context.MODE_PRIVATE);
+        return preferences.getBoolean("isShown",false);
+
+    }
+
+    public void headerClick(View view) {
+        NavigationView navigationView =  findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+
+        LinearLayout header =headerView.findViewById(R.id.header);
+        header.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,ProfileActivity.class));
+
+            }
+        });
     }
 }

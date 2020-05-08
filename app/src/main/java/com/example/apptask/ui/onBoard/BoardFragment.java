@@ -1,10 +1,16 @@
 package com.example.apptask.ui.onBoard;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.apptask.MainActivity;
@@ -35,6 +42,7 @@ public class BoardFragment extends Fragment {
 
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -44,17 +52,18 @@ public class BoardFragment extends Fragment {
         Button getStarted=view.findViewById(R.id.button_start);
         assert getArguments() != null;
         int pos=getArguments().getInt("pos");
+
         switch (pos) {
             case 0:
                 textFragment.setText("Welcome to Task App!");
                 textFragment2.setText("Task App number 1!");
                 imageView.setImageResource(R.drawable.onboardone);
                 break;
+
             case 1:
                 textFragment.setText("This App will help you to organize your life! ");
                 textFragment2.setText("Task App number 1!");
                 imageView.setImageResource(R.drawable.onboardtwo);
-
                 break;
             case 2:
                 textFragment.setText("Organize.Enjoy.Live");
@@ -63,5 +72,25 @@ public class BoardFragment extends Fragment {
                 getStarted.setVisibility(View.VISIBLE);
                 break;
         }
+        getStarted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveIsShown();
+                Intent intent=new Intent(getContext(),MainActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+
+            }
+        });
+    }
+    private void saveIsShown() {
+        SharedPreferences preferences=getActivity().getSharedPreferences("settings", Context.MODE_PRIVATE);
+        preferences.edit().putBoolean("isShown",true).apply();
+    }
+
+    private void changeColor(){
+        ColorDrawable cd = new ColorDrawable(getActivity().getResources().getColor(
+                R.color.colorAccent));
+        getActivity().getWindow().setBackgroundDrawable(cd);
     }
 }

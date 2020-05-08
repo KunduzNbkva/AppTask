@@ -18,4 +18,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="start">Get Started</string>
+    <string name="profileactivity">This is Profile Activity</string>
 </resources>
