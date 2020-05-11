@@ -25,7 +25,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnItemClickListener{
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -115,5 +115,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        startActivity(new Intent(this,FormActivity.class));
     }
 }
