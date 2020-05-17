@@ -6,6 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
+import androidx.transition.Transition;
 
 import com.example.apptask.models.Task;
 
@@ -30,4 +31,8 @@ public interface TaskDao {
 
     @Update
     void update(Task task);
+
+    @Query("SELECT * FROM task ORDER BY title DESC")
+    LiveData<List<Task>> getSortedList();
+
 }

@@ -21,16 +21,17 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
-    public ArrayList<Task> list;
+    public List<Task> list;
     public OnItemClickListener onItemClickListener;
 
     public void onItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 
-    public TaskAdapter(ArrayList<Task> list) {
+    public TaskAdapter(List<Task> list) {
         this.list = list;
     }
 
@@ -59,7 +60,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         return list.size();
     }
 
-    public void update(ArrayList<Task> tasks) {
+    public void update(List<Task> tasks) {
         list = tasks;
         notifyDataSetChanged();
     }

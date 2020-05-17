@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.apptask.models.Task;
+import com.example.apptask.ui.home.TaskAdapter;
 import com.example.apptask.ui.onBoard.OnBoardActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -25,9 +27,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.List;
+
+import static com.example.apptask.ui.home.HomeFragment.setNotSortedList;
+import static com.example.apptask.ui.home.HomeFragment.setSortedList;
+
 public class MainActivity extends AppCompatActivity implements OnItemClickListener{
 
     private AppBarConfiguration mAppBarConfiguration;
+    private boolean sort;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +76,22 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_exit) {
-            startActivity(new Intent(this,OnBoardActivity.class));
-            finish();
+        switch (item.getItemId()){
+            case R.id.action_exit:
+                startActivity(new Intent(this,OnBoardActivity.class));
+                finish();
+                break;
+            case R.id.action_sort:
+                if (!sort){
+                    setSortedList();
+                    sort = true;
+                } else {
+                    setNotSortedList();
+                    sort = false;
+                }
+                break;
         }
         return super.onOptionsItemSelected(item);
-
     }
 
     @Override

@@ -65,7 +65,6 @@ public class GalleryFragment extends Fragment {
 
     private  void getFiles(){
         File folder=new File(Environment.getExternalStorageDirectory(),"DCIM/Camera");
-        //if(!folder.exists()) folder.mkdir();
         for (File file:folder.listFiles()){
             Log.e("ololo","file="+ file.getAbsolutePath());
             listFiles.add(file.getAbsolutePath());

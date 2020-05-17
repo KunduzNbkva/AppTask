@@ -39,6 +39,7 @@ public class FilesAdapter extends RecyclerView.Adapter<FilesAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView textFile=itemView.findViewById(R.id.textFileAdress);
         public ViewHolder(@NonNull View itemView) {
+
             super(itemView);
         }
 
