@@ -34,28 +34,28 @@ public class OnBoardActivity extends AppCompatActivity  {
 
         valueAnimator.setDuration((3-1)*1000000000);
 
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                valueAnimator.setCurrentPlayTime((long)((position + positionOffset))*1000000000);
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                viewPager.setBackgroundColor((Integer)animation.getAnimatedValue());
-            }
-        });
+//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//                valueAnimator.setCurrentPlayTime((long)((position + positionOffset))*1000000000);
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//
+//            }
+//        });
+//        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//            @Override
+//            public void onAnimationUpdate(ValueAnimator animation) {
+//                viewPager.setBackgroundColor((Integer)animation.getAnimatedValue());
+//            }
+//        });
     }
 
     public void onSkip(View view) {

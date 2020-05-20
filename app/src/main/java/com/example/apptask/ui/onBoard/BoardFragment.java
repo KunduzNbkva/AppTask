@@ -26,7 +26,6 @@ import android.widget.TextView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.apptask.MainActivity;
 import com.example.apptask.R;
-
 import static com.example.apptask.R.raw.*;
 
 /**

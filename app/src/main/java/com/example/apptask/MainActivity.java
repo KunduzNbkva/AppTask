@@ -4,17 +4,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.apptask.login.PhoneActivity;
 import com.example.apptask.models.Task;
 import com.example.apptask.ui.home.TaskAdapter;
 import com.example.apptask.ui.onBoard.OnBoardActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,6 +47,12 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         if(!isShown()){
             startActivity(new Intent(this,OnBoardActivity.class));
             finish();
+        }
+        if(FirebaseAuth.getInstance().getCurrentUser()==null){
+            Log.e("User","CurrentUsers Instance"+ FirebaseAuth.getInstance().getCurrentUser());
+            startActivity(new Intent(this, PhoneActivity.class));
+            finish();
+            return;
         }
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -90,6 +99,8 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
                     sort = false;
                 }
                 break;
+            case R.id.action_logout:
+                FirebaseAuth.getInstance().signOut();
         }
         return super.onOptionsItemSelected(item);
     }

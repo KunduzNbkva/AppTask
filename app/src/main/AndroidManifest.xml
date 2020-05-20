@@ -12,9 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProfileActivity"></activity>
-        <activity android:name=".ui.onBoard.OnBoardActivity">
-              </activity>
+        <activity android:name=".login.PhoneActivity"></activity>
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ui.onBoard.OnBoardActivity"></activity>
         <activity android:name=".FormActivity" />
         <activity
             android:name=".MainActivity"

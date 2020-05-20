@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="32dp"
+    tools:context=".login.PhoneActivity"
+    style="@style/AppTheme.NoActionBar">
+    <LinearLayout
+        android:id="@+id/phoneLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        >
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="320dp"
+        android:layout_height="300dp"
+        android:layout_margin="20dp"
+        android:scaleType="centerCrop"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/verify1"
+      />
+
+    <com.github.pinball83.maskededittext.MaskedEditText
+            android:id="@+id/editPhone"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:inputType="number"
+            app:mask="+996 (***) *** ***"
+            app:notMaskedSymbol="*"
+            android:background="@drawable/edittextstyle"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Продолжить"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:onClick="onContinueClick"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btnstyle"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutCode"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        android:visibility="gone">
+<!--        <EditText-->
+<!--            android:id="@+id/editCode"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Введите код"-->
+<!--            android:inputType="number"/>-->
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="330dp"
+            android:layout_height="300dp"
+            android:layout_margin="0dp"
+            android:scaleType="centerCrop"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/verify2" />
+
+        <com.chaos.view.PinView
+            android:id="@+id/editCode"
+            style="@style/PinWidget.PinView"
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:cursorVisible="true"
+            android:inputType="number"
+            app:itemCount="6"
+            app:itemHeight="50dp"
+            app:itemWidth="50dp"
+            app:lineColor="@color/colorPrimary"
+            android:layout_marginTop="25dp"
+            app:itemRadius="4dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Войти"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:onClick="onVerifyClick"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btnstyle"/>
+    </LinearLayout>
+
+
+</LinearLayout>

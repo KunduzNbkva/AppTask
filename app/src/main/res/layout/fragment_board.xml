@@ -21,7 +21,6 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:scaleType="centerCrop"
-        app:lottie_rawRes="@raw/onb1"
         app:lottie_loop="true"
         app:lottie_autoPlay="true" />
     <TextView
