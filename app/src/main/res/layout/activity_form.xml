@@ -11,17 +11,23 @@
         android:id="@+id/editTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Title"/>
+        android:hint="Title"
+        android:textSize="30sp"
+        android:background="@drawable/edittextstyle"/>
     <EditText
         android:id="@+id/editDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Description"/>
+        android:hint="Description"
+        android:textSize="30sp"
+        android:background="@drawable/edittextstyle"
+        android:layout_marginTop="20dp"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save"
         android:background="@drawable/button_stroke_black95_press_white"
-        android:onClick="onClick"/>
+        android:onClick="onClick"
+        android:layout_marginTop="20dp"/>
 
 </LinearLayout>

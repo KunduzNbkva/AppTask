@@ -19,4 +19,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="start">Get Started</string>
     <string name="profileactivity">This is Profile Activity</string>
+    <string name="menu_firestore">Firestore</string>
 </resources>
