@@ -8,9 +8,12 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.apptask.login.PhoneActivity;
 import com.example.apptask.models.Task;
 import com.example.apptask.ui.home.TaskAdapter;
@@ -18,6 +21,7 @@ import com.example.apptask.ui.onBoard.OnBoardActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
 
     private AppBarConfiguration mAppBarConfiguration;
     private boolean sort;
+    FirebaseAuth mAuth;
+    FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +62,10 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         }
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mAuth=FirebaseAuth.getInstance();
+        currentUser=mAuth.getCurrentUser();
+        updateNavHeader();
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,5 +159,14 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     @Override
     public void onItemClick(int position) {
         startActivity(new Intent(this,FormActivity.class));
+    }
+
+    public  void updateNavHeader(){
+        NavigationView navigationView = findViewById(R.id.nav_view);
+         View headerView=navigationView.getHeaderView(0);
+        TextView header_name=headerView.findViewById(R.id.header_name);
+        ImageView header_image=headerView.findViewById(R.id.header_imageView);
+        header_name.setText(currentUser.getDisplayName());
+        Glide.with(this).load(currentUser.getPhotoUrl()).circleCrop().into(header_image);
     }
 }

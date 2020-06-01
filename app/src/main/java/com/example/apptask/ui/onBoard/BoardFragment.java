@@ -52,7 +52,7 @@ public class BoardFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         TextView textFragment=view.findViewById(R.id.textfragment);
         TextView textFragment2=view.findViewById(R.id.textfragment2);
-        ImageView imageView=view.findViewById(R.id.imageView);
+       // ImageView imageView=view.findViewById(R.id.imageView);
         Button getStarted=view.findViewById(R.id.button_start);
         assert getArguments() != null;
         int pos=getArguments().getInt("pos");

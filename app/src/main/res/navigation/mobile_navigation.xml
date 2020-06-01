@@ -44,7 +44,7 @@
 
     <fragment
         android:id="@+id/nav_firestore"
-        android:name="com.example.apptask.ui.slideshow.FirestoreFragment"
+        android:name="com.example.apptask.ui.firestore.FireStoreFragment"
         android:label="@string/menu_firestore"
         tools:layout="@layout/fragment_firestore" />
 </navigation>
