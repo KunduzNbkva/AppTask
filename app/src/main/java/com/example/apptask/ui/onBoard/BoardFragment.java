@@ -1,36 +1,25 @@
 package com.example.apptask.ui.onBoard;
 
-import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.apptask.MainActivity;
 import com.example.apptask.R;
 import static com.example.apptask.R.raw.*;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class BoardFragment extends Fragment {
 
     public BoardFragment() {

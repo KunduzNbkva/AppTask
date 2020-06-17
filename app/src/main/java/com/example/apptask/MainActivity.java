@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
 
         mAuth=FirebaseAuth.getInstance();
         currentUser=mAuth.getCurrentUser();
-        updateNavHeader();
+        updateNavHeader(); 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,5 +168,6 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         ImageView header_image=headerView.findViewById(R.id.header_imageView);
         header_name.setText(currentUser.getDisplayName());
         Glide.with(this).load(currentUser.getPhotoUrl()).circleCrop().into(header_image);
+        Log.e("Photo update","photo"+currentUser.getPhotoUrl());
     }
 }
